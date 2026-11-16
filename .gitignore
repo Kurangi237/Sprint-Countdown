@@ -7,5 +7,5 @@ __pycache__/
 venv/
 frontend/node_modules/
 frontend/build/
-public/
+/public/
 .vercel

@@ -1,12 +1,12 @@
-# DevSync: Autonomous Hackathon & AI Sprint Command Center
+# Sprint Countdown
 
-Built for the **Handshake AI Skills Studio X Google Challenge**.
+A browser-based sprint command center for running multiple tasks at once, scheduling upcoming work, and tracking task-specific milestones.
 
 ## Project Structure
-- `backend/`: FastAPI server managing sprint telemetry and milestones.
-- `frontend/`: React + Tailwind CSS dashboard styled for mobile/developer workflows.
+- `backend/`: FastAPI health and starter milestone endpoints.
+- `frontend/`: React + Tailwind CSS multi-task dashboard.
 
-The dashboard shows a live countdown with seconds. Plan and queue named sprint targets with deadlines and work topics without replacing the active target. Queued targets can be edited; their topics are shown while queued and on the active target. When the current target is reached, start the next queued target and review completed targets. Custom targets and target history are saved in the browser.
+Create any number of active tasks, schedule tasks to start later, or pause and resume work. Each task has a live seconds countdown, editable work topics, and its own editable milestone checklist. Tasks and milestone updates are saved in browser storage and synchronized between tabs in the same browser profile. Data is not shared between different users or devices.
 
 ## Quick Start
 1. Backend:
@@ -24,4 +24,4 @@ The dashboard shows a live countdown with seconds. Plan and queue named sprint t
    ```
 
 ## Deploy to Vercel
-Import the GitHub repository into Vercel and deploy from the repository root. The root `pyproject.toml` configures the FastAPI entrypoint and builds the React frontend into Vercel's static `public/` directory. In production, the frontend calls the API on the same origin; locally, it continues to use `http://localhost:8000`.
+Import the GitHub repository into Vercel and deploy from the repository root. The root `pyproject.toml` configures the FastAPI entrypoint and builds the React frontend into Vercel's static `public/` directory.
