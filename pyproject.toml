@@ -12,4 +12,4 @@ dependencies = [
 entrypoint = "backend.main:app"
 
 [tool.vercel.scripts]
-build = "npm --prefix frontend ci && npm --prefix frontend run build && node -e \"require('fs').cpSync('frontend/build', 'public', { recursive: true })\""
+build = "npm --prefix frontend ci && npm --prefix frontend run build"

@@ -24,4 +24,4 @@ Create any number of active tasks, schedule tasks to start later, or pause and r
    ```
 
 ## Deploy to Vercel
-Import the GitHub repository into Vercel and deploy from the repository root. The root `pyproject.toml` configures the FastAPI entrypoint and builds the React frontend into Vercel's static `public/` directory.
+Import the GitHub repository into Vercel and deploy from the repository root. The root `pyproject.toml` configures the FastAPI entrypoint and builds the React frontend. FastAPI serves the generated frontend assets after the API routes.

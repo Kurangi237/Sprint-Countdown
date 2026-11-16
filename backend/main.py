@@ -1,8 +1,10 @@
 from fastapi import FastAPI, HTTPException
 from fastapi.middleware.cors import CORSMiddleware
+from fastapi.staticfiles import StaticFiles
 from pydantic import BaseModel
 from typing import List, Optional
 from datetime import datetime, timezone
+from pathlib import Path
 
 app = FastAPI(
     title="DevSync API",
@@ -59,3 +61,6 @@ def update_milestone(milestone_id: int, update: MilestoneUpdate):
             m["completed"] = update.completed
             return m
     raise HTTPException(status_code=404, detail="Milestone not found")
+
+frontend_build = Path(__file__).resolve().parents[1] / "frontend" / "build"
+app.mount("/", StaticFiles(directory=frontend_build, html=True, check_dir=False), name="frontend")
