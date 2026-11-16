@@ -3,6 +3,9 @@ import React, { useEffect, useState } from 'react';
 const TARGET_STORAGE_KEY = 'devsync.activeTarget';
 const QUEUE_STORAGE_KEY = 'devsync.targetQueue';
 const HISTORY_STORAGE_KEY = 'devsync.completedTargets';
+const API_BASE_URL = process.env.NODE_ENV === 'development'
+  ? 'http://localhost:8000'
+  : '';
 const DEFAULT_TARGET = {
   id: 'hackathon-submission',
   name: 'Hackathon Submission',
@@ -74,7 +77,7 @@ export default function DevSyncDashboard() {
   const [targetError, setTargetError] = useState('');
 
   useEffect(() => {
-    fetch('http://localhost:8000/api/milestones')
+    fetch(`${API_BASE_URL}/api/milestones`)
       .then(res => {
         if (!res.ok) throw new Error(`Milestones request failed (${res.status})`);
         return res.json();
@@ -88,7 +91,7 @@ export default function DevSyncDashboard() {
         setLoading(false);
       });
 
-    fetch('http://localhost:8000/api/health')
+    fetch(`${API_BASE_URL}/api/health`)
       .then(res => {
         if (!res.ok) throw new Error(`Health request failed (${res.status})`);
         return res.json();
@@ -102,7 +105,7 @@ export default function DevSyncDashboard() {
 
   const toggleMilestone = async (id, currentStatus) => {
     try {
-      const res = await fetch(`http://localhost:8000/api/milestones/${id}`, {
+      const res = await fetch(`${API_BASE_URL}/api/milestones/${id}`, {
         method: 'PATCH',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ completed: !currentStatus }),
