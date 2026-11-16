@@ -8,3 +8,4 @@ venv/
 frontend/node_modules/
 frontend/build/
 public/
+.vercel
